@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
-COPY ["Ecomerce.csproj", "."]
-RUN dotnet restore "./Ecomerce.csproj"
+COPY ["Ecomerce-Profetional.csproj", "."]
+RUN dotnet restore "./Ecomerce-Profetional.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "Ecomerce.csproj" -c Release -o /app/build
+RUN dotnet build "Ecomerce-Profetional.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Ecomerce.csproj" -c Release -o /app/publish
+RUN dotnet publish "Ecomerce-Profetional.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Ecomerce.dll"]
+ENTRYPOINT ["dotnet", "Ecomerce-Profetional.dll"]

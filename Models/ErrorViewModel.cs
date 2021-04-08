@@ -1,6 +1,6 @@
 using System;
 
-namespace Ecomerce.Models
+namespace Ecomerce_Profetional.Models
 {
     public class ErrorViewModel
     {

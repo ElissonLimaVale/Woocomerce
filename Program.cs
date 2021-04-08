@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ecomerce
+namespace Ecomerce_Profetional
 {
     public class Program
     {
