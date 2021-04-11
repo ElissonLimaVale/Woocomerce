@@ -1,7 +1,7 @@
-﻿using Ecomerce_Profetional.Models;
+﻿using WooComerce.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ecomerce_Profetional
+namespace WooComerce
 {
     public class ApplicationContext : DbContext
     {

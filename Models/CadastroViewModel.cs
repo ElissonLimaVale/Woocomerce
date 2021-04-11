@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ecomerce_Profetional.Models
+namespace WooComerce.Models
 {
     public class CadastroViewModel
     {

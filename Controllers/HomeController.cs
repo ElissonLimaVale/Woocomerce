@@ -1,13 +1,9 @@
-﻿using Ecomerce_Profetional.Models;
+﻿using WooComerce.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Ecomerce_Profetional.Controllers
+namespace WooComerce.Controllers
 {
     public class HomeController : Controller
     {

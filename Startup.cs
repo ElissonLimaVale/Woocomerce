@@ -5,7 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using WooComerce;
+using WooComerce.Models;
 using WooComerce.Repository;
+using WooComerce.Repository.Interface;
 
 namespace Ecomerce_Profetional
 {
@@ -25,7 +28,14 @@ namespace Ecomerce_Profetional
 
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
-            services.AddTransient<DataService>();
+            services.AddTransient<IDataService ,DataService>();
+            services.AddTransient<IBaseRepository<ItemPedidoViewModel>, ItemPedidoRepository>();
+            services.AddTransient<IBaseRepository<PedidoViewModel>, PedidoRepository>();
+            services.AddTransient<IBaseRepository<ProdutoViewModel> ,ProdutoRepository>();
+            services.AddTransient<IBaseRepository<CadastroViewModel>, Cadastro>();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,11 +53,10 @@ namespace Ecomerce_Profetional
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
-
             app.UseAuthorization();
-
 
             app.UseEndpoints(endpoints =>
             {
@@ -56,7 +65,7 @@ namespace Ecomerce_Profetional
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            provider.GetService<DataService>().Inicializate();
+            provider.GetService<IDataService>().Inicializate();
         }
     }
 }

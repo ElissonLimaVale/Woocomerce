@@ -1,6 +1,6 @@
 using System;
 
-namespace Ecomerce_Profetional.Models
+namespace WooComerce.Models
 {
     public class ErrorViewModel
     {
