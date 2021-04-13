@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using WooComerce.Repository.Interface;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace WooComerce.Repository
 {
@@ -20,49 +21,81 @@ namespace WooComerce.Repository
 
         public dynamic Atualizar(PedidoViewModel entidade)
         {
-            throw new NotImplementedException();
+            dynamic response = new { data = true, message = "Atualizado com sucesso!" };
+            try
+            {
+                _entity.Entry(entidade).State = EntityState.Modified;
+                _entity.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                response = new { data = false, message = ex.Message };
+            }
+            return response;
         }
 
         public dynamic Cadastrar(PedidoViewModel entidade)
         {
-            throw new NotImplementedException();
+            dynamic response = new { data = true, message = "Cadastrado com sucesso!" };
+            try
+            {
+                _entity.Pedido.Add(entidade);
+                _entity.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                response = new { data = false, message = ex.Message };
+            }
+            return response;
         }
 
         public dynamic Deletar(PedidoViewModel entidade)
         {
-            throw new NotImplementedException();
+            dynamic response = new { data = true, message = "Deletado com sucesso!" };
+            try
+            {
+                _entity.Pedido.Remove(entidade);
+                _entity.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                response = new { data = false, message = ex.Message };
+            }
+            return response;
         }
 
         public ICollection<PedidoViewModel> SearchFilter(PedidoViewModel ObjectFilter)
         {
-            throw new NotImplementedException();
+            var response = _entity.Pedido.Where(
+                x => x.CadastroId == ObjectFilter.CadastroId &&
+                x.id == ObjectFilter.id 
+            ).ToList();
+            if (response == null) {
+                response = new List<PedidoViewModel>();
+            }
+            return response;
         }
 
         public ICollection<PedidoViewModel> SearchFull()
         {
-            throw new NotImplementedException();
+            return _entity.Pedido.ToList();
         }
 
         public PedidoViewModel SearchOne(int id)
         {
-            throw new NotImplementedException();
+            return _entity.Pedido.FirstOrDefault(x => x.id == id);
         }
 
-        private int? gePedidoId()
-        {
-            int? response = _session.HttpContext.Session.GetInt32("PedidoId");
-            return response;
-        }
-
-        private void setPedidoId(int PedidoId)
-        {
-            _session.HttpContext.Session.SetInt32("PedidoId", PedidoId);
-        }
 
         public PedidoViewModel GetPedidoAtual()
         {
             var PedidoId = gePedidoId();
-            var response = _entity.Pedido.FirstOrDefault(x => x.id == PedidoId);
+            var response = _entity.Pedido
+                .Include(x => x.ItemPedido)
+                .ThenInclude(x => x.Produto)
+                .Where(x => x.id == PedidoId)
+                .SingleOrDefault();
+
             if(response == null)
             {
                 response = new PedidoViewModel();
@@ -70,39 +103,42 @@ namespace WooComerce.Repository
                 _entity.SaveChanges();
                 setPedidoId(response.id);
             }
-
             return response;
+        }
+
+        private void setPedidoId(int id)
+        {
+            _session.HttpContext.Session.SetInt32("PedidoId", id);
+        }
+
+        private int? gePedidoId()
+        {
+            return _session.HttpContext.Session.GetInt32("PedidoId");
         }
 
         public dynamic AddItem(string codigo)
         {
             dynamic response;
-            //var registro = _entity.Produto.FirstOrDefault(x => x.Codigo == codigo);
-            //if(registro == null)
-            //{
-            //    response = new { data = false, message = "Produto não encontrado!", pedido = GetPedidoAtual()};
-            //}else
-            //{
-            //    PedidoViewModel pedido = GetPedidoAtual();
-            //    var ItemPedido = _entity.ItemPedido.FirstOrDefault(x => x.Produto.Codigo == registro.Codigo && x.PedidoId == pedido.id);
-            //    if (ItemPedido == null)
-            //    {
-            //        var item = new ItemPedidoViewModel();
-            //        item.Pedido = pedido;
-            //        item.Produto = registro;
-            //        item.Quantidade = 1;
-            //        item.PrecoUnitario = registro.Preco;
-            //        _entity.ItemPedido.Add(item);
-            //    }
-            //    else
-            //    {
-            //        ItemPedido.Quantidade += 1;
-            //    }
-            //    _entity.SaveChanges();
-                response = new { data = true, message = "Produto adicionado!", pedido = _entity.Pedido.FirstOrDefault(x => x.id == null) };
+            var registro = _entity.Produto.FirstOrDefault(x => x.Codigo == codigo);
+            if (registro == null)
+            {
+                response = new { data = false, message = "Produto não encontrado!", pedido = GetPedidoAtual() };
+            }
+            else
+            {
+                PedidoViewModel pedido = GetPedidoAtual();
 
-            //}
-
+                var item = new ItemPedidoViewModel();
+                item.PedidoId = gePedidoId();
+                item.Pedido = pedido;
+                item.Produto = registro;
+                item.Quantidade = 1;
+                item.PrecoUnitario = registro.Preco;
+                pedido.ItemPedido.Add(item);
+                _entity.Entry(pedido).State = EntityState.Modified;
+                _entity.SaveChanges();
+                response = new { data = true, message = "Produto adicionado!", pedido = pedido };
+            }
             return response;
         }
     }

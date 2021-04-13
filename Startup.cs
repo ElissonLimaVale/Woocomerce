@@ -25,17 +25,19 @@ namespace Ecomerce_Profetional
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDistributedMemoryCache();
+            services.AddHttpContextAccessor();
+            services.AddSession();
 
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services.AddTransient<IDataService ,DataService>();
             services.AddTransient<IBaseRepository<ItemPedidoViewModel>, ItemPedidoRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddTransient<IBaseRepository<PedidoViewModel>, PedidoRepository>();
             services.AddTransient<IBaseRepository<ProdutoViewModel> ,ProdutoRepository>();
             services.AddTransient<IBaseRepository<CadastroViewModel>, Cadastro>();
 
-            services.AddDistributedMemoryCache();
-            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,13 +53,11 @@ namespace Ecomerce_Profetional
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseSession();
 
             app.UseRouting();
             app.UseAuthorization();
-
+            app.UseStaticFiles();
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

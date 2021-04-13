@@ -34,13 +34,19 @@ namespace WooComerce.Controllers
         [HttpGet]
         public IActionResult Carrinho(string codigo)
         {
-            var pedido = _aditionalPedido.GetPedidoAtual();
-            if(!string.IsNullOrEmpty(codigo))
+            var response = new PedidoViewModel();
+            if (!string.IsNullOrEmpty(codigo))
             {
-                pedido = _aditionalPedido.AddItem(codigo);
+                dynamic result = _aditionalPedido.AddItem(codigo);
+                if (result.GetType().GetProperty("data").GetValue(result, null))
+                {
+                    response = result.GetType().GetProperty("pedido").GetValue(result, null)  as PedidoViewModel;
+                }
+            }else
+            {
+                response = _aditionalPedido.GetPedidoAtual();
             }
-
-            return View(pedido.ItemPedido);
+            return View(response);
         }
         public IActionResult Carrossel()
         {
@@ -51,5 +57,6 @@ namespace WooComerce.Controllers
         {
             return View();
         }
+
     }
 }
