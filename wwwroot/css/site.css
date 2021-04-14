@@ -1,13 +1,19 @@
 ﻿*{
     margin: 0px;
     padding: 0px;
+    color: #FFF;
+}
+
+body {
+    background-color: #2d3c44;
 }
 ._body {
     width: 100%;
     height: auto;
 }
-body {
-    background-color: #d0dfe3;
+.container-body {
+    width: 96%;
+    margin: auto;
 }
 .mobile {
     /*display: none;*/
@@ -195,15 +201,6 @@ body {
     align-items: center;
 }
 
-.item-produto {
-    margin-bottom: 20px;
-}
-.img-produto-carrossel {
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid rgba(0,0,0,.1);
-}
-
 .img-produto-carrinho {
     height: 120px;
     filter: drop-shadow(2px 2px 2px #ccc);
@@ -221,27 +218,6 @@ body {
     border-bottom: 1px solid rgba(0,0,0,.1);
     padding: 20px;
 }
-
-.produto-nome {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.produto-footer {
-    max-height: 140px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-.pull-right {
-    margin-top: 10px;
-}
-
-.right {
-     float: right;
-}
-
 
 /*############################# RODAPÉ ############################*/
 
@@ -289,6 +265,7 @@ body {
     margin: 10px 0px;
     border: none;
     border-radius: 2px;
+    text-decoration: none;
 }
 .btn-rodape:hover {
     color: azure;
@@ -300,4 +277,27 @@ body {
     background-color: rgba(0,0,0,.0);
     border: 1px solid #d8d8dd;
     color: #fff;
+}
+.select-input {
+    width: 100% !important;
+    padding: 10px 20px;
+    border-radius: 2px;
+    border: 1px solid #d8d8dd;
+    color: #d8d8dd !important;
+    background-color: rgba(0,0,0,.0);
+}
+select-input option {
+    color: #d8d8dd!important;
+}
+
+.left {
+    float: left;
+}
+.right {
+     float: right;
+}
+.super-title {
+    /*text-align: center;*/
+    margin-left: 25px;
+    margin-bottom: 30px;
 }
