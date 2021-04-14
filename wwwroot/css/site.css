@@ -1,40 +1,150 @@
-﻿body {
-    background-color: #eaefef;
+﻿*{
+    margin: 0px;
+    padding: 0px;
 }
-h1 {
-    margin-bottom: 20px;
+._body {
+    width: 100%;
+    height: auto;
+}
+body {
+    background-color: #d0dfe3;
+}
+.mobile {
+    /*display: none;*/
 }
 
 /*######################### MENU ##############################*/
+.container-menu {
+    width: 100%;
+}
 .navbar {
-    /*position: fixed !important;
-    top: 0px !important;*/
+    z-index: 99999;
+    position: fixed !important;
+    top: 0px !important;
     width: 100% !important;
-    background-color: #2f3c3c !important;
-}
-.navbar-toggler {
-    outline: none !important;
-    background-color: #eaefef;
-    border-radius: 2px !important;
-}
-.nav-link {
-    font-size: 16px;
-    color: #eaefef !important;
-    font-weight: bold;
-    /*padding: 20px 40px !important;*/
-}
-.nav-link:hover {
-    color: #dbdbdb !important;
+    background-color: rgba(0,0,0,.4) !important;
+    border: none !important;
 }
 
-@media screen and (max-width: 800px) {
+.navbar-brand {
+    background: url('../images/logo.png') no-repeat;
+    background-size: 80%;
+    background-position: 50%;
+    width: 180px;
+    height: 55px;
+    float: left;
+}
+
+.navbar-toggler {
+    position: absolute !important;
+    top: 10px;
+    right: 10px;
+    outline: none !important;
+    border-radius: 2px !important;
+    border: none;
+    margin-right: 5px;
+    color: #fff !important;
+}
+
+.space-menu {
+    display: none;
+}
+.navbar-collapse {
+    float: right;
+}
+.nav-link {
+    font-size: 10px;
+    color: #fff !important;
+    transition: .4s linear;
+    padding: 10px 24px;
+}
+.nav-item {
+    transition: .3s;
+    padding: 5px 12px;
+}
+.nav-item:hover {
+    background-color: rgba(0,0,0,.1);
+}
+
+.mobile {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 991px) {
+    .navbar-brand {
+        float: none;
+    }
+    .navbar-collapse {
+        float: none;
+    }
+    .nav-item {
+        transition: .3s;
+        padding: 0px 5px;
+    }
+    .nav-link {
+        font-size: 20px;
+        color: #eaefef !important;
+        padding: 24px 48px !important;
+    }
+    .space-menu {
+        display: block;
+        height: 20px;
+        opacity: 0;
+    }
+    .slide {
+        width: 100%;
+        height: 1200px;
+        background: url('../images/home01.jpg') no-repeat;
+        background-size: 100%;
+        background-position: 50%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .navbar-brand {
+        float: none;
+    }
+    .navbar-collapse {
+        float: none;
+    }
+    .nav-item {
+        transition: .3s;
+        padding: 0px 5px;
+    }
     .nav-link {
         font-size: 16px;
         color: #eaefef !important;
         font-weight: bold;
         padding: 20px 40px !important;
     }
+
+    .space-menu {
+        display: block;
+        height: 20px;
+        opacity: 0;
+    }
+    .slide {
+        width: 100%;
+        height: 1400px;
+        background: url('../images/home01.jpg') no-repeat;
+        background-size: 100%;
+    }
 }
+
+
+/*########################## FIM MANU ##############################*/
+/*##################################################################*/
+
+.slide {
+    width: 100%;
+    height: 640px;
+    background: url('../images/home01.jpg') no-repeat;
+    background-size: 100%;
+}
+
+
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -45,15 +155,10 @@ h1 {
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
     background-color: #2f3c3c;
-    border-color: #1861ac;
+    /*border-color: #1861ac;*/
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+
 
 /* Carousel */
 .carousel-caption p {
@@ -67,7 +172,7 @@ textarea {
 }
 
 /* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 900px) {
     /* Hide captions */
     .carousel-caption {
         display: none;
@@ -78,14 +183,6 @@ textarea {
 .right.carousel-control {
     background-image: none;
     margin-bottom: 100px;
-}
-
-.navbar-brand {
-    background: url('../images/logo.png') no-repeat;
-    background-size: 80%;
-    background-position: 50%;
-    width: 215px;
-    height: 55px;
 }
 
 .navbar-inverse {
@@ -145,23 +242,62 @@ textarea {
      float: right;
 }
 
-.border-row {
-    border-bottom: 1px solid rgba(0,0,0,.1);
-    margin-top: 10px;
-}
 
-.slide {
-    width: 100%;
-    height: 450px;
-    /*background-color: #e2e2e2;*/
-}
+/*############################# RODAPÉ ############################*/
 
 .footer {
-    /* position: relative;
-    bottom: 0px;*/
+    display: inline-block;
     background-color: #2f3c3c;
     width: 100%;
-    white-space: nowrap;
-    line-height: 150px;
 }
 
+.title-footer {
+    font-size: 16px;
+    color: #fff !important;
+    font-weight: bold;
+    padding: 10px 20px !important;
+}
+.subtitle-footer {
+    font-size: 14px;
+    color: #d8d8dd !important;
+}
+.menu-rodape {
+    list-style: none;
+}
+.menu-rodape li{
+    margin: 10px;
+}
+.menu-rodape li a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 14px;
+    color: #d8d8dd;
+}
+/*###########################  FIM RODAAPÉ  ##############################*/
+
+
+
+/*######################### GENERIC ###################################*/
+.divisor {
+    width: 100%;
+    height: 50px;
+}
+.btn-rodape {
+    padding: 10px 28px;
+    color: #FFF;
+    background-color: #35707f;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 2px;
+}
+.btn-rodape:hover {
+    color: azure;
+}
+.input {
+    width: 100% !important;
+    padding: 10px 20px;
+    border-radius: 2px;
+    background-color: rgba(0,0,0,.0);
+    border: 1px solid #d8d8dd;
+    color: #fff;
+}

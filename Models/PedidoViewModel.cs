@@ -7,6 +7,11 @@ namespace WooComerce.Models
 {
     public class PedidoViewModel
     {
+        public PedidoViewModel()
+        {
+            this.Cadastro = new CadastroViewModel();
+            this.ItemPedido = new List<ItemPedidoViewModel>();
+        }
         public int id { get; set; }
         public int CadastroId { get; set; }
         public CadastroViewModel Cadastro { get; set; }

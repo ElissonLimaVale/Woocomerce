@@ -8,7 +8,7 @@ namespace WooComerce.Models
     public class ItemPedidoViewModel
     {
         public int id { get; set; }
-        public int PedidoId { get; set; }
+        public int? PedidoId { get; set; }
         public float PrecoUnitario { get; set; }
         public int ProdutoId { get; set; }
         public int Quantidade { get; set; }

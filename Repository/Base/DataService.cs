@@ -1,5 +1,10 @@
 ﻿
 
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
+using WooComerce.Models;
+
 namespace WooComerce.Repository
 {
     public class DataService : IDataService
@@ -19,7 +24,6 @@ namespace WooComerce.Repository
 
             //foreach (ProdutoViewModel livro in livros)
             //{
-            //    livro.id = null;
             //    _context.Produto.Add(livro);
             //}
 

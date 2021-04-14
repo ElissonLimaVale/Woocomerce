@@ -23,7 +23,7 @@ namespace WooComerce
 
             builder.Entity<PedidoViewModel>().HasKey(x => x.id);
             builder.Entity<PedidoViewModel>().HasMany(x => x.ItemPedido).WithOne(x => x.Pedido);
-            builder.Entity<PedidoViewModel>().HasOne(x => x.Cadastro).WithOne(x => x.Pedido).IsRequired();
+            builder.Entity<PedidoViewModel>().HasOne(x => x.Cadastro).WithOne(x => x.Pedido);
 
             builder.Entity<ItemPedidoViewModel>().HasKey(x => x.id);
             builder.Entity<ItemPedidoViewModel>().HasOne(x => x.Pedido);
