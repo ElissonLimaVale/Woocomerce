@@ -3,93 +3,101 @@
     ViewData["Title"] = "Cadastro";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="divisor"></div>
+<div class="divisor"></div>
 
-<div class="panel panel-default">
-    <div class="panel-body row">
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label" for="nomeCliente">Nome do Cliente</label>
-                <input type="text" class="form-control" id="nomeCliente" placeholder="Nome do Cliente">
+<div class="container-body">
+    <h1 class="super-title">@ViewData["Title"]</h1>
+    <div class="panel panel-default">
+        <div class="panel-body row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label class="control-label" for="nomeCliente">Nome do Cliente</label>
+                    <input type="text" class="form-control input" id="nomeCliente" placeholder="Nome do Cliente">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="email">Email</label>
+                    <input type="email" class="form-control input" id="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="telefone">Telefone</label>
+                    <input type="text" class="form-control input" id="telefone" placeholder="Telefone">
+                </div>
             </div>
-            <div class="form-group">
-                <label class="control-label" for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label class="control-label" for="endereco">Endereço</label>
+                    <input type="text" class="form-control input" id="endereco" placeholder="Endereço">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="complemento">Complemento</label>
+                    <input type="text" class="form-control input" id="complemento" placeholder="Complemento">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="bairro">Bairro</label>
+                    <input type="text" class="form-control input" id="bairro" placeholder="Bairro">
+                </div>
             </div>
-            <div class="form-group">
-                <label class="control-label" for="telefone">Telefone</label>
-                <input type="text" class="form-control" id="telefone" placeholder="Telefone">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label class="control-label" for="municipio">Município</label>
+                    <input type="text" class="form-control input" id="municipio" placeholder="Município">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="UF">UF</label>
+                    <select class="form-select select-input" name="UF">
+                        <option selected value="">[Selecione o estado]</option>
+                        <option style="color: #d8d8dd;" value="AC">Acre</option>
+                        <option style="color: #d8d8dd;" value="AL">Alagoas</option>
+                        <option style="color: #d8d8dd;" value="AP">Amapá</option>
+                        <option style="color: #d8d8dd;" value="AM">Amazonas</option>
+                        <option style="color: #d8d8dd;" value="BA">Bahia</option>
+                        <option style="color: #d8d8dd;" value="CE">Ceará</option>
+                        <option style="color: #d8d8dd;" value="DF">Distrito Federal</option>
+                        <option style="color: #d8d8dd;" value="ES">Espírito Santo</option>
+                        <option style="color: #d8d8dd;" value="GO">Goiás</option>
+                        <option style="color: #d8d8dd;" value="MA">Maranhão</option>
+                        <option style="color: #d8d8dd;" value="MT">Mato Grosso</option>
+                        <option style="color: #d8d8dd;" value="MS">Mato Grosso do Sul</option>
+                        <option style="color: #d8d8dd;" value="MG">Minas Gerais</option>
+                        <option style="color: #d8d8dd;" value="PA">Pará</option>
+                        <option style="color: #d8d8dd;" value="PB">Paraíba</option>
+                        <option style="color: #d8d8dd;" value="PR">Paraná</option>
+                        <option style="color: #d8d8dd;" value="PE">Pernambuco</option>
+                        <option style="color: #d8d8dd;" value="PI">Piauí</option>
+                        <option style="color: #d8d8dd;" value="RJ">Rio de Janeiro</option>
+                        <option style="color: #d8d8dd;" value="RN">Rio Grande do Norte</option>
+                        <option style="color: #d8d8dd;" value="RS">Rio Grande do Sul</option>
+                        <option style="color: #d8d8dd;" value="RO">Rondônia</option>
+                        <option style="color: #d8d8dd;" value="RR">Roraima</option>
+                        <option style="color: #d8d8dd;" value="SC">Santa Catarina</option>
+                        <option style="color: #d8d8dd;" value="SP">São Paulo</option>
+                        <option style="color: #d8d8dd;" value="SE">Sergipe</option>
+                        <option style="color: #d8d8dd;" value="TO">Tocantins</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="cep">CEP</label>
+                    <input type="text" class="form-control input" id="cep" placeholder="CEP">
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label" for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" placeholder="Endereço">
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="complemento">Complemento</label>
-                <input type="text" class="form-control" id="complemento" placeholder="Complemento">
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="bairro">Bairro</label>
-                <input type="text" class="form-control" id="bairro" placeholder="Bairro">
-            </div>
 
-            <div class="form-group">
-                <a class="btn btn-success" href="/">
-                    Continuar Comprando
-                </a>
-            </div>
+
+    </div>
+    <div class="divisor"></div>
+    <div class="col-sm-12">
+        <div class="form-group col-sm-3 left">
+            <button type="submit"
+                    class="btn-rodape btn-success input">
+                Finalizar Pedido
+            </button>
         </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label" for="municipio">Município</label>
-                <input type="text" class="form-control" id="municipio" placeholder="Município">
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="UF">UF</label>
-                <select class="form-control single-select" name="UF">
-                    <option selected value="">[Selecione o estado]</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espírito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="control-label" for="cep">CEP</label>
-                <input type="text" class="form-control" id="cep" placeholder="CEP">
-            </div>
-            
-            <div class="form-group">
-                <button type="submit"
-                        class="btn btn-success">
-                    Finalizar Pedido
-                </button>
-            </div>
+        <div class="form-group col-sm-3 right">
+            <button class="btn-rodape btn-success right input">
+                Continuar Comprando
+            </button>
         </div>
     </div>
+    <div class="divisor"></div>
 </div>
