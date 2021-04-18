@@ -359,6 +359,18 @@ select-input option {
 .b-none {
     border: none !important;
 }
+.b-top {
+    border-top: 1px solid rgba(0,0,0,.3);
+}
+.b-left {
+    border-left: 1px solid rgba(0,0,0,.3);
+}
+.b-bottom {
+    border-bottom: 1px solid rgba(0,0,0,.3);
+}
+.b-right {
+    border-right: 1px solid rgba(0,0,0,.3);
+}
 .defaul-style {
     outline: none !important;
 }
