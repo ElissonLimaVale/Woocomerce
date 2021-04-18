@@ -11,6 +11,6 @@ namespace WooComerce.Models
         public string Codigo { get; set; }
         public string Nome { get; set; }
         public float Preco { get; set; }
-        public virtual List<ItemPedidoViewModel> ItemPedido { get; set; }
+        public List<ItemPedidoViewModel> ItemPedido { get; set; }
     }
 }
