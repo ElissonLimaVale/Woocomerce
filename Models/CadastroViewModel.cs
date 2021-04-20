@@ -17,6 +17,6 @@ namespace WooComerce.Models
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public string UF { get; set; }
-        public virtual PedidoViewModel Pedido { get; set; }
+        public PedidoViewModel Pedido { get; set; }
     }
 }

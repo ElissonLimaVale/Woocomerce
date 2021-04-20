@@ -15,6 +15,8 @@ namespace WooComerce.Models
         public int id { get; set; }
         public int CadastroId { get; set; }
         public CadastroViewModel Cadastro { get; set; }
-        public virtual List<ItemPedidoViewModel> ItemPedido { get; set; }
+        public List<ItemPedidoViewModel> ItemPedido { get; set; }
+
+
     }
 }
